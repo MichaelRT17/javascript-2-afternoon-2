@@ -177,10 +177,7 @@ var myGroceryList = ['chips', 'pizza', 'hotpockets', 'MtnDew', 'corndogs'];
 */
 
 function removeItem(myGroceryList, item) {
-  if(!myGroceryList) {
-      return [];
-    }
-    if(!item){
+  if(!myGroceryList || !item) {
       return [];
     }
   for(var i = 0; i < myGroceryList.length; i++) {
@@ -189,14 +186,12 @@ function removeItem(myGroceryList, item) {
     }
   }
   return myGroceryList;
+
 }
 
 
 function addItem(myGroceryList, item) {
-  if(!myGroceryList) {
-    return [];
-  }
-  if(!item){
+  if(!myGroceryList || !item) {
     return [];
   }
   myGroceryList.push(item);
