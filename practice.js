@@ -21,8 +21,6 @@ function first(arr) {
   return arr[0];
 }
 
-
-
 ////////// PROBLEM 2 //////////
 
 // Do not edit the code below.
@@ -34,9 +32,7 @@ var arr = [40,50,60];
   Return the last item in the given array.
 */
 
-function last(arr) {
-  return arr[arr.length - 1];
-}
+var last = arr => arr[arr.length-1];
 
 ////////// PROBLEM 3 //////////
 
@@ -49,13 +45,11 @@ var family = ['Tyler', 'Jordyn', 'Ryan', 'Chelsey', 'Ireland'];
   Loop through the given array and alert every item in the array.
 */
 
-function looper(family){
-  family.forEach(function(element){
+function looper(family) {
+  family.forEach(element => {
     alert(element);
   });
 }
-
-
 
 ////////// PROBLEM 4 //////////
 
@@ -69,9 +63,9 @@ var letters = ['A', 'B', 'C', 'D', 'E'];
 */
 
 function reversedLooper(letters) {
-  for (var i = letters.length - 1; i >= 0; i--) {
+  for(var i = letters.length - 1; i >= 0; i--) {
     alert(letters[i]);
-  }
+  };
 }
 
 ////////// PROBLEM 5 //////////
@@ -85,14 +79,8 @@ var nums = [1,2,3,6,22,98,45,23,22,12];
   Return an array that contains the even numbers from the nums array.
 */
 
-function evenFinder(nums) {
-  var evensOnly = [];
-  for (var i = 0; i < nums.length; i++) {
-    if (nums[i] % 2 === 0) {
-      evensOnly.push(nums[i]);
-    }
-  }
-  return evensOnly;
+function evenFinder(nums){
+ return nums.filter(elem => elem % 2 === 0)
 }
 
 ////////// EXTRA PRACTICE PROBLEMS BELOW //////////
@@ -109,20 +97,10 @@ var numbersArray = [1,2,34,54,55,34,32,11,19,17,54,66,13];
 */
 
 function divider(numbersArray) {
-  var evensArray = [];
-  var oddsArray = [];
-  for (var i = 0; i < numbersArray.length; i++) {
-    if (numbersArray[i] % 2 === 0) {
-      evensArray.push(numbersArray[i]);
-    } else if (numbersArray[i] % 2 !== 0) {
-      oddsArray.push(numbersArray[i]);
-    }
-  }
-  var finalArray = [evensArray, oddsArray];
-  return finalArray;
+  let evens = numbersArray.filter(e => e % 2 === 0);
+  let odds = numbersArray.filter(e => e % 2 !== 0);
+  return [evens, odds];
 }
-
-
 
 ////////// PROBLEM 7 //////////
 
@@ -142,14 +120,12 @@ var getRandomArbitrary = function() {
 */
 
 function finder(array) {
-  var randomNum = getRandomArbitrary();
-  for(var i = 0; i < array.length; i++) {
-    if(array[i] === randomNum) {
-      return true;
-    }
+  let rN = getRandomArbitrary();
+  if(array.includes(rN)) {
+    return true;
   }
   return false;
-  }
+}
 
 ////////// PROBLEM 8 //////////
 
@@ -178,26 +154,23 @@ var myGroceryList = ['chips', 'pizza', 'hotpockets', 'MtnDew', 'corndogs'];
 
 function removeItem(myGroceryList, item) {
   if(!myGroceryList || !item) {
-      return [];
-    }
-  for(var i = 0; i < myGroceryList.length; i++) {
-    if(item === myGroceryList[i]) {
-      myGroceryList.splice(i,1);
-    }
+    return [];
   }
-  return myGroceryList;
-
+  for(var i = 0; i < myGroceryList.length; i++) {
+    if(myGroceryList[i] === item) {
+      myGroceryList.splice(i, 1);
+  }
 }
-
+return myGroceryList;
+}
 
 function addItem(myGroceryList, item) {
   if(!myGroceryList || !item) {
     return [];
   }
-  myGroceryList.push(item);
-  return myGroceryList;
+    myGroceryList.push(item);
+    return myGroceryList;
 }
-
 
 ////////// PROBLEM 9 //////////
 
@@ -206,17 +179,12 @@ function addItem(myGroceryList, item) {
 */
 
 function maker() {
-  var newArray = [];
-  var i = 1;
-  do {
-    newArray.push(i);
-    i++;
-  } 
-  while(i <= 215);
-  return newArray;
+  let arr = [];
+  for(var i = 1; i <= 215; i++) {
+    arr.push(i);
+  }
+  return arr;
 }
-
-
 
 ////////// PROBLEM 10 //////////
 
@@ -230,15 +198,13 @@ var numbers = [5, '9', 16, 19, '25', '34', 48];
   *Verify your answer is correct. --> [15, 19, 26, 29, 35, 44, 58]
 */
   
-var addTen = (numbers) => {
-  var newArray = [];
-  for(var i = 0; i < numbers.length; i++){
-    newArray.push(Number(numbers[i]) + 10);
+function addTen(numbers) {
+  for(var i = 0; i < numbers.length; i++) {
+    numbers[i] = parseInt(numbers[i]);
   }
-  return newArray; 
+  numbers = numbers.map(e => e+10)
+  return numbers;
 }
-
-
 
 ////////// PROBLEM 11 //////////
 
@@ -270,8 +236,6 @@ function longer(arr1, arr2) {
   }
 }
 
-
-
 /*
   As a continuation of the previous problem, write another function called 'both'.
   Your 'both' function will be given two arguments, arr1 and arr2 (from the previous example).
@@ -281,14 +245,16 @@ function longer(arr1, arr2) {
 */
 
 function both(arr1, arr2) {
-  var newArray = [];
-  for(var i = 0; i < arr1.length && i < arr2.length; i++) {
-    if(arr2.includes(arr1[i])) {
-      newArray.push(arr1[i])
+  let arr = [];
+  for(var i = 0; i < arr1.length || i < arr2.length; i++) {
+    for(var j = 0; j <arr1.length || j < arr2.length; j++) {
+      if(arr1[i] === arr2[j] && !arr.includes(arr1[i])) {
+        arr.push(arr1[i])
+      }
     }
-  } return newArray;
+  }
+  return arr;
 }
-
 
 
 ////////// PROBLEM 12 //////////
@@ -332,20 +298,18 @@ devMountainEmployees.push(cahlan);
 devMountainEmployees.push(ryan);
 devMountainEmployees.push(colt);
 
-console.log(devMountainEmployees);
-
+console.log(devMountainEmployees.length);
 
 /*
   Now let's say Cahlan has a mental breakdown and has to take a leave of absence to 'find himself'.
   Loop through your devMountainEmployees until you find cahlan, then remove him from the array.
 */
 
-devMountainEmployees.forEach(function(element, i){
-  if(element.name === 'Cahlan') {
-    devMountainEmployees.splice(i,1)
+for(var i = 0; i < devMountainEmployees.length; i++) {
+  if(devMountainEmployees[i].name === 'Cahlan') {
+    devMountainEmployees.splice(i, 1);
   }
-})
-
+}
 
 ////////// PROBLEM 13 //////////
 
@@ -356,8 +320,6 @@ devMountainEmployees.forEach(function(element, i){
 */
 
 var users = [];
-
-
 
 /*
   Now add three user objects to your users array. Each user object should contain the following properties. name, email, password, username.
@@ -375,29 +337,30 @@ var user1 = {
 // Do not edit the code above.
 
 var user2 = {
-    name: 'Michael Thurman',
-    email: 'michael@hi.com',
-    password: 'yoyoyo',
-    username: 'micky t'
+  name: 'aTyler McGinnis',
+  email: 'atylermcginnis33@gmail.com',
+  password: 'aiLoveJavaScript',
+  username: 'ainfiniteLoop'
 };
 
 var user3 = {
-    name: 'Carissa Thurman',
-    email: 'carissa@hi.com',
-    password: 'hihihi',
-    username: 'C dawg'
+  name: 'bTyler McGinnis',
+  email: 'btylermcginnis33@gmail.com',
+  password: 'biLoveJavaScript',
+  username: 'binfiniteLoop'
 };
 
 var user4 = {
-    name: 'Hazel Rose',
-    email: 'hazel@hi.com',
-    password: 'bybyby',
-    username: 'baby'
+  name: 'cTyler McGinnis',
+  email: 'ctylermcginnis33@gmail.com',
+  password: 'ciLoveJavaScript',
+  username: 'cinfiniteLoop'
 };
 
-users.push(user1, user2, user3, user4);
-
-
+users.push(user1);
+users.push(user2);
+users.push(user3);
+users.push(user4);
 
 
 /*
@@ -410,13 +373,11 @@ users.push(user1, user2, user3, user4);
   Once you find the particular index he's located in, delete him from the array.
 */
 
-users.forEach(function(element, i) {
-  if(element.email === 'tylermcginnis33@gmail.com') {
-    users.splice(i, 1)
-  }
-});
-
-
+for(var i = 0; i < users.length; i++) {
+  if(users[i].email === 'tylermcginnis33@gmail.com') {
+    users.splice(i,1);
+  };
+}
 
 /*
   The activity we just did is very much how data works in 'the real world'.
